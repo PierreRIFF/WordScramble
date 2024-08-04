@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { Alert, Grid, Snackbar } from "@mui/material";
+import { Alert, Grid, Paper, Snackbar } from "@mui/material";
 import GridLine from "./GridLine";
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         severity: "error",
     });
     const [foundCells, setFoundCells] = useState([]);
+    const [foundStrings, setFoundStrings] = useState([]);
 
     const grid = [
         "ocdmedalepgnselteli",
@@ -93,6 +94,7 @@ function App() {
                 }
             }
             setFoundCells([...foundCells, ...completed]);
+            setFoundStrings([...foundStrings, string]);
         } else if (string === "bypierreetbidoulove") {
             setSnackbar({
                 open: true,
@@ -125,37 +127,38 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div style={{ padding: 2, textAlign: "center" }}>
             <h1>Le prochain lieu où vous rendre sera dévoilé par cette grille. Bonne chance!</h1>
             <h3>Pour valider un mot, cliquez sur sa 1ère lettre puis sur sa dernière.</h3>
-            <Grid container spacing={0} columns={19}>
-                <GridLine string={grid[0]} x={0} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[1]} x={1} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[2]} x={2} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[3]} x={3} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[4]} x={4} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[5]} x={5} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[6]} x={6} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[7]} x={7} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[8]} x={8} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[9]} x={9} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[10]} x={10} checkClick={checkClick} foundCells={foundCells} />
-                <GridLine string={grid[11]} x={11} checkClick={checkClick} foundCells={foundCells} />
-            </Grid>
+            <Paper elevation={2} sx={{ padding: 1 }}>
+                <Grid container spacing={0} columns={19}>
+                    <GridLine string={grid[0]} x={0} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[1]} x={1} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[2]} x={2} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[3]} x={3} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[4]} x={4} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[5]} x={5} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[6]} x={6} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[7]} x={7} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[8]} x={8} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[9]} x={9} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[10]} x={10} checkClick={checkClick} foundCells={foundCells} />
+                    <GridLine string={grid[11]} x={11} checkClick={checkClick} foundCells={foundCells} />
+                </Grid>
 
-            <p>Le Mac Carthy en est un (3 lettres)</p>
-            <p>Un lycée en V (6 lettres)</p>
-            <p>Doit souvent être tué dans les MMORPG ou "Meuporg" (3 lettres)</p>
-            <p>La place la plus connue de Nancy, en version raccourcie (4 lettres)</p>
-            <p>Instrument de prédilection de Vincent (7 lettres)</p>
-            <p>Couleur préférée de Julie (5 lettres)</p>
-            <p>La ville où tout a commencé (5 lettres)</p>
-            <p>Le plus grand parc de Nancy, mais version raccourcie (3 lettres)</p>
-            <p>Style musical issu du rock/reggae/jazz impliquant souvant des cuivres (3 lettres)</p>
-            <p>Couleur préférée de Vincent (4 lettres)</p>
-            <p>Un lycée en P (6 lettres)</p>
-            <p>La musique ou le cinéma en sont une forme (3 lettres)</p>
-
+                <p style={foundStrings.includes("pub") ? { color: "darkgreen", border: "2px solid green" } : {}}>Le Mac Carthy en est un (3 lettres)</p>
+                <p style={foundStrings.includes("loritz") ? { color: "darkgreen", border: "2px solid green" } : {}}>Un lycée en L (6 lettres)</p>
+                <p style={foundStrings.includes("mob") ? { color: "darkgreen", border: "2px solid green" } : {}}>Doit souvent être tué dans les MMORPG ou "Meuporg" (3 lettres)</p>
+                <p style={foundStrings.includes("stan") ? { color: "darkgreen", border: "2px solid green" } : {}}>La place la plus connue de Nancy, en version raccourcie (4 lettres)</p>
+                <p style={foundStrings.includes("guitare") ? { color: "darkgreen", border: "2px solid green" } : {}}>Instrument de prédilection de Vincent (7 lettres)</p>
+                <p style={foundStrings.includes("rouge") ? { color: "darkgreen", border: "2px solid green" } : {}}>Couleur préférée de Julie (5 lettres)</p>
+                <p style={foundStrings.includes("nancy") ? { color: "darkgreen", border: "2px solid green" } : {}}>La ville où tout a commencé (5 lettres)</p>
+                <p style={foundStrings.includes("pep") ? { color: "darkgreen", border: "2px solid green" } : {}}>Le plus grand parc de Nancy, mais version raccourcie (3 lettres)</p>
+                <p style={foundStrings.includes("ska") ? { color: "darkgreen", border: "2px solid green" } : {}}>Style musical issu du rock/reggae/jazz impliquant souvant des cuivres (3 lettres)</p>
+                <p style={foundStrings.includes("vert") ? { color: "darkgreen", border: "2px solid green" } : {}}>Couleur préférée de Vincent (4 lettres)</p>
+                <p style={foundStrings.includes("poinca") ? { color: "darkgreen", border: "2px solid green" } : {}}>Un lycée en P (6 lettres)</p>
+                <p style={foundStrings.includes("art") ? { color: "darkgreen", border: "2px solid green" } : {}}>La musique ou le cinéma en sont une forme (3 lettres)</p>
+            </Paper>
             <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={snackbar.open} onClose={() => setSnackbar({ open: false, message: "", severity: "" })} autoHideDuration={1000}>
                 <Alert elevation={6} variant="filled" severity={snackbar.severity}>
                     {snackbar.message}
